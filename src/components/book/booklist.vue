@@ -8,7 +8,9 @@
       <el-table-column fixed prop="id" label="id" width="150"></el-table-column>
       <el-table-column prop="title" label="标题" width="120"></el-table-column>
       <el-table-column prop="click" label="点击数" width="120"></el-table-column>
-      <el-table-column prop="add_time" label="添加时间" width="120"></el-table-column>
+      <el-table-column prop="add_time" label="添加时间" width="150">
+        <template slot-scope="scope">{{scope.row.add_time | converTime('YYYY-MM-DD HH:mm')}}</template>
+      </el-table-column>
       <el-table-column prop="img_url" label="图片" width="120">
         <!-- 显示图片 -->
         <template slot-scope="scope">
@@ -78,7 +80,6 @@ export default {
             .get(`book/del?id=` + data.id)
             .then(res => {
               // console.log(res);
-           
             })
             .catch(console.log);
           this.$message({

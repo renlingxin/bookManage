@@ -7,7 +7,9 @@
     >
       <el-table-column prop="id" label="ID" width="80"></el-table-column>
       <el-table-column prop="title" label="商品描述" width="180"></el-table-column>
-      <el-table-column prop="add_time" label="添加时间" width="120"></el-table-column>
+      <el-table-column prop="add_time" label="添加时间" width="120">
+        <template slot-scope="scope">{{scope.row.add_time | converTime('YYYY-MM-DD HH:mm')}}</template>
+      </el-table-column>
       <el-table-column prop="stock" label="剩余存量" width="120"></el-table-column>
       <el-table-column prop="img_url" label="商品简介图" width="120">
         <!-- 显示图片 -->
@@ -82,7 +84,6 @@ export default {
             .get(`shop/del?id=` + data.id)
             .then(res => {
               // console.log(res);
-          
             })
             .catch(console.log);
           this.$message({
@@ -120,4 +121,4 @@ export default {
   }
 };
 </script>
-<style></style>;
+<style></style>

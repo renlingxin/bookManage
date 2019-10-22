@@ -23,6 +23,7 @@ li{
 .block{
   
   width: 100%;
-  position: fixed;
-  bottom: 30px;
+  margin-top: 25px;
+  /* position: fixed;
+  bottom: 50px; */
 }

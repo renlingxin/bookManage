@@ -10,7 +10,7 @@ import '../static/css/public.css';
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 const i18n = new VueI18n({
-  locale: 'en', // 语言标识
+  locale: 'zh', // 语言标识
   messages: {
     'zh': require('./assets/lang/zh'),
     'en': require('./assets/lang/en')
@@ -18,14 +18,10 @@ const i18n = new VueI18n({
 
 })
 
-
-
-
-
 // 引入element-ui   开始
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
+Vue.use(ElementUI,{ size: 'small' });
 
 // 引入element-ui  结束
 

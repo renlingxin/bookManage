@@ -30,9 +30,9 @@
       </div>
     </div>
     <!-- 导航栏 -->
-    <el-container width="200px" style="height: 600px; border: 1px solid #eee">
+    <el-container width="200px" style="height: 100%">
       <!-- 导航 -->
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+      <el-aside style="width:200px">
         <!-- 首页 -->
         <router-link :to="{name:'index'}">
           <div class="index">
@@ -168,7 +168,7 @@
       </el-aside>
 
       <!-- 内容 -->
-      <el-container>
+      <el-container class="content">
         <router-view />
       </el-container>
     </el-container>
@@ -206,7 +206,7 @@
   color: #fff;
   margin-left: 10px;
 }
-.imge img{
+.imge img {
   width: 27px;
   height: 17px;
 }
@@ -225,6 +225,7 @@
   height: 50px;
   line-height: 50px;
   background-color: #fff;
+  color: #000;
   border-bottom: 1px solid silver;
   font-size: 15px;
 }
@@ -234,14 +235,16 @@
   margin-left: 25px;
   margin-right: 5px;
 }
-.el-header {
-  background-color: #b3c0d1;
-  color: #333;
-  line-height: 60px;
+.el-menu{
+  border-right: 0;
 }
-
 .el-aside {
-  color: #333;
+  margin: 15px;
+  border: 1px solid silver;
+}
+/* 内容 */
+.content{
+  margin-top: 15px;
 }
 </style>
 
@@ -249,13 +252,8 @@
 export default {
   name: "App",
   data() {
-    const item = {
-      date: "2016-05-02",
-      name: "王小虎",
-      address: "上海市普陀区金沙江路 1518 弄"
-    };
     return {
-      tableData: Array(20).fill(item)
+
     };
   },
   methods: {
