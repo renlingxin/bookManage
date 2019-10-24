@@ -16,9 +16,6 @@
           <img :src="scope.row.img" alt width="60" height="60" />
         </template>
       </el-table-column>
-
-      <el-table-column prop="address" label width="300"></el-table-column>
-      <el-table-column prop="zip" label width="120"></el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>

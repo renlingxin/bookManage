@@ -4,6 +4,7 @@
       :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
       border
       style="width: 100%"
+      size="small"
     >
       <el-table-column prop="id" label="ID" width="80"></el-table-column>
       <el-table-column prop="title" label="商品描述" width="180"></el-table-column>
@@ -20,9 +21,6 @@
       <el-table-column prop="sell_price" label="现价" width="120"></el-table-column>
       <el-table-column prop="market_price" label="原价" width="120"></el-table-column>
       <el-table-column prop="page" label="显示页" width="120"></el-table-column>
-
-      <el-table-column prop="address" label width="300"></el-table-column>
-      <el-table-column prop="zip" label width="120"></el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
