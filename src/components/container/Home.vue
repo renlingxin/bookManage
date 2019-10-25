@@ -37,8 +37,10 @@ export default {
   top: 60px;
 }
 .substance {
+  width: 100%;
   position: fixed;
   top: 70px;
   left: 180px;
+  text-align: center;
 }
 </style> 
