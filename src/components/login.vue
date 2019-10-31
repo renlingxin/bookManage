@@ -1,21 +1,26 @@
 <template>
   <div class="hello">
     <div class="atap">
+      <h2>书园</h2>
       <!-- 导航 -->
       <ul class="navbato tantan">
         <li @click="isShow = 1" :class="isShow === 1 ? 'active' : ''">{{$t('m.acc')}}</li>
         <li @click="isShow = 2" :class="isShow === 2 ? 'active' : ''">{{$t('m.pass')}}</li>
       </ul>
       <!-- 登录 -->
-      <div class="login" v-if="isShow === 1">
+      <div class="login tantan" v-if="isShow === 1">
         <!-- 输入 -->
         <div class="usermake">
+          <i class="iconfont icon-yonghu"></i>
           <input
             type="text"
             v-model="loginuser"
             :placeholder="$t('m.pone')"
             @change="userver(loginuser)"
           />
+        </div>
+        <div class="usermake">
+          <i class="iconfont icon-mima"></i>
           <input
             type="text"
             v-model="loginpass"
@@ -27,12 +32,24 @@
         <button @click="goSeach">{{$t('m.login')}}</button>
       </div>
       <!-- 忘记密码 -->
-      <div class="login" v-if="isShow === 2">
+      <div class="login tantan" v-if="isShow === 2">
         <!-- 输入 -->
         <div class="usermake">
+          <i class="iconfont icon-yonghu"></i>
           <input type="text" v-model="nickname" :placeholder="$t('m.name')" @change="nickver" />
+        </div>
+        <div class="usermake">
+          <i class="iconfont icon-shouji"></i>
           <input type="text" v-model="phone" :placeholder="$t('m.pone')" @change="userver(phone)" />
-          <input type="text" v-model="password" :placeholder="$t('m.keyword')" @change="passver(password)" />
+        </div>
+        <div class="usermake">
+          <i class="iconfont icon-yanzhengma"></i>
+          <input
+            type="text"
+            v-model="password"
+            :placeholder="$t('m.keyword')"
+            @change="passver(password)"
+          />
         </div>
         <!-- 登录 -->
         <button>{{$t('m.code')}}</button>
@@ -124,63 +141,75 @@ export default {
 </script>
 
 <style scoped>
-.atap {
-  width: 40%;
-  height: 350px;
-  margin: 25px auto;
-  background-color: #fff;
-  position: relative;
-}
+/* 背景 */
 .hello {
   width: 100%;
   height: 100%;
-  background-color: rgb(243, 243, 243);
+  position: fixed;
+  background: url(../../static/img/4.jpg);
+  background-size: 100%;
+}
+/* 密码框 */
+.atap {
+  width: 28%;
+  height: 380px;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+  overflow: hidden;
+  background-color: rgba(38, 43, 54, 0.9);
+}
+.atap h2 {
+  color: #fff;
+  margin-top: 10px;
 }
 /* 头部导航 */
 .navbato {
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
+  margin-top: 18px;
   color: silver;
-  justify-content: space-between;
 }
 .navbato li {
-  text-align: center;
   height: 50px;
   line-height: 50px;
   width: 50%;
-  cursor:pointer
+  cursor: pointer;
 }
 .active {
-  border-bottom: 1px solid #000;
-  color: #000;
+  border-bottom: 1px solid #08897e;
+  color: #08897e;
 }
 /* 登录 */
 .login {
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 30px;
+  width: 100%;
+  margin-top: 18px;
+  justify-content: center;
+}
+.login .usermake {
+  width: 70%;
+  height: 40px;
+  background-color: #fff;
+  margin-top: 10px;
+  border-radius: 5px;
 }
 .login input {
-  width: 100%;
-  height: 50px;
-  margin-top: 8px;
+  width: 80%;
+  height: 100%;
   border: none;
-
-  border-bottom: 1px solid rgb(201, 201, 201);
+  /* 取消input选中高亮 */
+  outline: none;
 }
 .login button {
-  position: absolute;
-  bottom: 15px;
-  left: 80px;
-  width: 300px;
+  width: 250px;
   height: 40px;
-  background-color: red;
-  opacity: 0.5;
+  background-color: #08897e;
+  opacity: 0.8;
   border: none;
   color: #fff;
   border-radius: 4px;
-  margin-top: 20px;
-   cursor:pointer
+  margin-top: 40px;
+  cursor: pointer;
 }
 /* 注册 */
 </style>

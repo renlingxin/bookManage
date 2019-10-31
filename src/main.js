@@ -6,6 +6,8 @@ import router from './router'
 
 // 引入全局自定义样式
 import '../static/css/public.css';
+// iconfont样式
+import './assets/iconfont/iconfont.css'
 
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
@@ -28,18 +30,26 @@ Vue.use(ElementUI,{ size: 'small' });
 // 全局路由配置
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.Login)){  // 判断该路由是否需要登录权限
-    if (localStorage.getItem('admin')) {  // 判断当前用户的登录信息loginInfo是否存在
-      next();
-    } else {
-      next({
-        name:'login'
-      })
-    }
-  }else {
-    next();
-  }
 
+  if(!localStorage.getItem('admin') && to.path !== '/login'){
+    console.log(111111111)
+    next({
+      path:'/login'
+    })
+  }else{
+    next()
+  }
+  // if (to.matched.some(record => record.meta.Login)){  // 判断该路由是否需要登录权限
+  //   if (localStorage.getItem('admin')) {  // 判断当前用户的登录信息loginInfo是否存在
+  //     next();
+  //   } else {
+  //     next({
+  //       path:'/login'
+  //     })
+  //   }
+  // }else {
+  //   next();
+  // }
 })
 // 全局路由配置结束
 
