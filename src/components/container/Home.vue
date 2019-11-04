@@ -35,12 +35,14 @@ export default {
 .aside {
   position: fixed;
   top: 60px;
+
 }
 .substance {
   width: 100%;
+  height: 100%;
   position: fixed;
   top: 70px;
   left: 180px;
-  text-align: center;
+  background-color: rgb(238, 238, 238);
 }
 </style> 

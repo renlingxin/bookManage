@@ -129,7 +129,7 @@ export default {
               localStorage.setItem("admin", user);
               // 跳转到首页
               this.$router.push({
-                name: "index"
+                path: "/"
               });
             }
           })
@@ -210,6 +210,7 @@ export default {
   border-radius: 4px;
   margin-top: 40px;
   cursor: pointer;
+  outline: none;
 }
 /* 注册 */
 </style>

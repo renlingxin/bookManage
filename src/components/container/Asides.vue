@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!-- 商家 -->
-    <div v-if="false">
+    <div>
       <el-aside style="width:170px">
+        <!-- 商家 -->
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
@@ -11,39 +11,28 @@
           background-color="#333"
           text-color="#fff"
           active-text-color="#ffd04b"
+          v-if="asideTypeShow === 1"
         >
-          <el-menu-item>
-            <i class="el-icon-menu"></i>
+          <el-menu-item index="1">
+            <i class="el-icon-reading"></i>
             <span slot="title">首页</span>
           </el-menu-item>
-          <el-submenu>
+          <el-submenu index="2">
             <template slot="title">
-              <i class="el-icon-location"></i>
+              <i class="el-icon-s-shop"></i>
               <span>店铺</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item>商品</el-menu-item>
-              <el-menu-item>订单</el-menu-item>
+              <el-menu-item index="2-1">商品</el-menu-item>
+              <el-menu-item index="2-2">订单</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-menu-item>
-            <i class="el-icon-menu"></i>
+          <el-menu-item index="3">
+            <i class="el-icon-s-data"></i>
             <span slot="title">数据</span>
           </el-menu-item>
-          <el-menu-item>
-            <i class="el-icon-setting"></i>
-            <span slot="title">管理员</span>
-          </el-menu-item>
-          <el-menu-item>
-            <i class="el-icon-setting"></i>
-            <span slot="title">管理</span>
-          </el-menu-item>
         </el-menu>
-      </el-aside>
-    </div>
-    <!-- 管理 -->
-    <div>
-      <el-aside style="width:170px">
+        <!-- 管理 -->
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
@@ -52,112 +41,71 @@
           background-color="#333"
           text-color="#fff"
           active-text-color="#ffd04b"
+          v-if="asideTypeShow === 0"
         >
-          <!-- 管理员 -->
-          <el-submenu>
+          <!-- 分类 -->
+          <el-submenu index="1">
             <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>管理员</span>
+              <i class="el-icon-menu"></i>
+              <span>分类管理</span>
+            </template>
+            <el-menu-item-group>
+              <router-link :to="{path:'/type/list'}">
+                <el-menu-item index="1-1">分类列表</el-menu-item>
+              </router-link>
+              <router-link :to="{path:'/type/add'}">
+                <el-menu-item index="1-2">添加分类</el-menu-item>
+              </router-link>
+            </el-menu-item-group>
+          </el-submenu>
+          <!-- 账号管理 -->
+          <el-submenu index="2">
+            <template slot="title">
+              <i class="el-icon-user"></i>
+              <span>账号管理</span>
             </template>
             <el-menu-item-group>
               <router-link :to="{path:'/admin'}">
-                <el-menu-item>管理员列表</el-menu-item>
+                <el-menu-item index="2-1">管理员</el-menu-item>
               </router-link>
-              <router-link :to="{path:'/admin/add'}">
-                <el-menu-item>添加管理员</el-menu-item>
-              </router-link>
-            </el-menu-item-group>
-          </el-submenu>
-          <!-- 用户 -->
-          <el-submenu>
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>用户</span>
-            </template>
-            <el-menu-item-group>
               <router-link :to="{path:'/user/list'}">
-                <el-menu-item>用户列表</el-menu-item>
+                <el-menu-item index="2-2">用户列表</el-menu-item>
               </router-link>
-              <router-link :to="{path:'/user/add'}">
-                <el-menu-item>添加用户</el-menu-item>
+              <router-link :to="{path:'/author/list'}">
+                <el-menu-item index="2-3">作者列表</el-menu-item>
               </router-link>
             </el-menu-item-group>
           </el-submenu>
-          <!-- 书文管理 -->
-          <el-submenu>
+          <!-- 内容管理 -->
+          <el-submenu index="3">
             <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>书文管理</span>
+              <i class="el-icon-star-off"></i>
+              <span>内容管理</span>
             </template>
             <el-menu-item-group>
               <router-link :to="{path:'/book/list'}">
-                <el-menu-item>书文列表</el-menu-item>
+                <el-menu-item index="3-1">书文列表</el-menu-item>
               </router-link>
-              <router-link :to="{path:'/book/add'}">
-                <el-menu-item>添加书文</el-menu-item>
-              </router-link>
-            </el-menu-item-group>
-          </el-submenu>
-          <!-- 图文分享 -->
-          <el-submenu>
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>图文分享</span>
-            </template>
-            <el-menu-item-group>
               <router-link :to="{path:'/img/list'}">
-                <el-menu-item>图文列表</el-menu-item>
-              </router-link>
-              <router-link :to="{path:'/img/add'}">
-                <el-menu-item>添加图文</el-menu-item>
-              </router-link>
-            </el-menu-item-group>
-          </el-submenu>
-          <!-- 作者管理 -->
-          <el-submenu>
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>作者管理</span>
-            </template>
-            <el-menu-item-group>
-              <router-link :to="{path:'/author/list'}">
-                <el-menu-item>作者列表</el-menu-item>
-              </router-link>
-              <router-link :to="{path:'/img/add'}">
-                <el-menu-item>添加作者</el-menu-item>
+                <el-menu-item index="3-2">图文列表</el-menu-item>
               </router-link>
             </el-menu-item-group>
           </el-submenu>
           <!-- 商品管理 -->
-          <el-submenu>
+          <!-- <el-submenu index="3">
             <template slot="title">
               <i class="el-icon-location"></i>
               <span>商品管理</span>
             </template>
             <el-menu-item-group>
               <router-link :to="{path:'/shop/list'}">
-                <el-menu-item>商品列表</el-menu-item>
+                <el-menu-item index="3-1">商品列表</el-menu-item>
               </router-link>
               <router-link :to="{path:'/shop/add'}">
-                <el-menu-item>添加商品</el-menu-item>
+                <el-menu-item index="3-2">添加商品</el-menu-item>
               </router-link>
             </el-menu-item-group>
-          </el-submenu>
-          <!-- 分类管理 -->
-          <el-submenu>
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>分类</span>
-            </template>
-            <el-menu-item-group>
-              <router-link :to="{path:'/type/list'}">
-                <el-menu-item>分类列表</el-menu-item>
-              </router-link>
-              <router-link :to="{path:'/type/add'}">
-                <el-menu-item>添加分类</el-menu-item>
-              </router-link>
-            </el-menu-item-group>
-          </el-submenu>
+          </el-submenu>-->
         </el-menu>
       </el-aside>
     </div>
@@ -167,7 +115,10 @@
 export default {
   name: "aside",
   data() {
-    return {};
+    return {
+      // 调控侧边栏显示-商户-管理
+      asideTypeShow: 0
+    };
   }
 };
 </script>
@@ -176,17 +127,17 @@ export default {
 /* 左侧导航 */
 .el-aside {
   border-top: 1px solid rgb(134, 134, 134);
+  margin: 5px;
 }
-.el-menu {
-}
+
 .el-menu-vertical-demo {
   width: 170px;
   height: 700px;
 }
-span{
+span {
   font-size: 16px;
 }
-li{
+li {
   font-size: 12px;
 }
 </style> 

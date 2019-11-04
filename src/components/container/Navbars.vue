@@ -77,6 +77,7 @@ export default {
 .head {
   width: 100%;
   height: 60px;
+      /* background-color: #08897e; */
   background-color: #333;
   color: #fff;
   overflow: hidden;
