@@ -22,7 +22,7 @@
         <div class="usermake">
           <i class="iconfont icon-mima"></i>
           <input
-            type="text"
+            type="password"
             v-model="loginpass"
             :placeholder="$t('m.qpass')"
             @change="passver(loginpass)"
@@ -45,7 +45,7 @@
         <div class="usermake">
           <i class="iconfont icon-yanzhengma"></i>
           <input
-            type="text"
+            type="password"
             v-model="password"
             :placeholder="$t('m.keyword')"
             @change="passver(password)"
@@ -154,6 +154,7 @@ export default {
   width: 28%;
   height: 380px;
   margin: 0 auto;
+  border-radius: 10px;
   margin-top: 50px;
   text-align: center;
   overflow: hidden;

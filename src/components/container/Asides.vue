@@ -6,8 +6,6 @@
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
           background-color="#333"
           text-color="#fff"
           active-text-color="#ffd04b"
@@ -36,8 +34,6 @@
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
           background-color="#333"
           text-color="#fff"
           active-text-color="#ffd04b"
@@ -91,21 +87,6 @@
               </router-link>
             </el-menu-item-group>
           </el-submenu>
-          <!-- 商品管理 -->
-          <!-- <el-submenu index="3">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>商品管理</span>
-            </template>
-            <el-menu-item-group>
-              <router-link :to="{path:'/shop/list'}">
-                <el-menu-item index="3-1">商品列表</el-menu-item>
-              </router-link>
-              <router-link :to="{path:'/shop/add'}">
-                <el-menu-item index="3-2">添加商品</el-menu-item>
-              </router-link>
-            </el-menu-item-group>
-          </el-submenu>-->
         </el-menu>
       </el-aside>
     </div>
@@ -113,7 +94,6 @@
 </template>
 <script>
 export default {
-  name: "aside",
   data() {
     return {
       // 调控侧边栏显示-商户-管理
@@ -126,18 +106,21 @@ export default {
 <style scoped>
 /* 左侧导航 */
 .el-aside {
-  border-top: 1px solid rgb(134, 134, 134);
-  margin: 5px;
-}
-
-.el-menu-vertical-demo {
+  /* border-top: 1px solid rgb(134, 134, 134); */
   width: 170px;
-  height: 700px;
+  height: 100%;
+  overflow-x: hidden;
+}
+.el-menu-vertical-demo {
+  width: 100%;
+  /* 满屏显示 */
+  height: 100vh;
+  overflow: hidden;
 }
 span {
-  font-size: 16px;
+  font-size: 12px;
 }
 li {
-  font-size: 12px;
+  font-size: 5px;
 }
 </style> 

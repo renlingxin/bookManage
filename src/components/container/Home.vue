@@ -43,6 +43,6 @@ export default {
   position: fixed;
   top: 70px;
   left: 180px;
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(245, 244, 244);
 }
 </style> 
