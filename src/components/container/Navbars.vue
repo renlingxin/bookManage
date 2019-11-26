@@ -2,7 +2,10 @@
   <!-- 头部 -->
   <div class="head tantan">
     <!-- 标题 -->
-    <div class="title">{{$t('m.title')}}</div>
+    <div class="definition tantan">
+      <img src="../../../static/img/书.png" alt />
+      {{$t('m.title')}}
+    </div>
     <!-- 设置 -->
     <div class="setup tantan">
       <i class="el-icon-edit" @click="jump"></i>
@@ -77,20 +80,32 @@ export default {
 .head {
   width: 100%;
   height: 60px;
-      /* background-color: #08897e; */
-  background-color: #333;
+  /* background-color: #333; */
   color: #fff;
   overflow: hidden;
   justify-content: space-between;
   align-items: center;
+  background-color:#333;
+background-image:
+radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
+background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+
 }
 /* 标题 */
-.title {
+.definition {
   width: 200px;
   height: 50px;
-  text-align: center;
-  line-height: 50px;
+  justify-content: center;
+  align-items: center;
   font-size: 18px;
+}
+.definition img {
+  width: 35px;
+  height: 35px;
 }
 /* 设置+头像 */
 .setup {

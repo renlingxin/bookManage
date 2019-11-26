@@ -88,6 +88,9 @@ Vue.filter('Wordcontrol',function(str,num){
 })
 // 定义全局过滤器  结束
 
+// 全局组件
+import Pagination from './components/common/Pagination'
+Vue.component(Pagination.name,Pagination)
 
 
 

@@ -1,10 +1,6 @@
 <template>
-  <div style="width: 100%">
-    <!-- <el-pagination layout="prev, pager, next" :total="50">
-    </el-pagination>-->
-
+  <div style="width: 100%;overflow:auto;margin-bottom:150px;">
     <!-- 面包屑 -->
-    <div></div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">分类管理</el-breadcrumb-item>
       <el-breadcrumb-item>分类列表</el-breadcrumb-item>
@@ -13,10 +9,7 @@
     <div class="info">
       <h3 style="margin:8px">分类详情</h3>
       <hr />
-      <el-table
-        :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
-        style="width: 100%"
-      >
+      <el-table :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)" style="width:85%">
         <el-table-column prop="id" label="ID" width="120"></el-table-column>
         <el-table-column prop="tid" label="分类ID" width="120"></el-table-column>
         <el-table-column prop="title" label="标题" width="120"></el-table-column>
@@ -26,28 +19,54 @@
             <img :src="scope.row.img" alt width="60" height="60" />
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="100">
+          <el-table-column prop="img" label="图片" width="120">
+          <!-- 显示图片 -->
+          <template slot-scope="scope">
+            <img :src="scope.row.img" alt width="60" height="60" />
+          </template>
+        </el-table-column>
+          <el-table-column prop="img" label="图片" width="120">
+          <!-- 显示图片 -->
+          <template slot-scope="scope">
+            <img :src="scope.row.img" alt width="60" height="60" />
+          </template>
+        </el-table-column>
+          <el-table-column prop="img" label="图片" width="120">
+          <!-- 显示图片 -->
+          <template slot-scope="scope">
+            <img :src="scope.row.img" alt width="60" height="60" />
+          </template>
+        </el-table-column>
+          <el-table-column prop="img" label="图片" width="120">
+          <!-- 显示图片 -->
+          <template slot-scope="scope">
+            <img :src="scope.row.img" alt width="60" height="60" />
+          </template>
+        </el-table-column>
+          <el-table-column prop="img" label="图片" width="120">
+          <!-- 显示图片 -->
+          <template slot-scope="scope">
+            <img :src="scope.row.img" alt width="60" height="60" />
+          </template>
+        </el-table-column>
+          <el-table-column prop="img" label="图片" width="120">
+          <!-- 显示图片 -->
+          <template slot-scope="scope">
+            <img :src="scope.row.img" alt width="60" height="60" />
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="100" fixed="right">
           <template slot-scope="scope">
             <el-button type="text" size="small" @click="handleClick(scope.row)">编辑</el-button>
             <el-button type="text" size="small" @click="deletesType(scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
+      <hr />
       <!-- 分页 -->
-      <div class="block">
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :page-sizes="[1, 3, 5, 8]"
-          :page-size="pageSize"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="totalNum"
-        ></el-pagination>
-      </div>
-
+      <pagination :totalNum="totalNum" :pageSize="pageSize"></pagination>
       <!-- 编辑弹框 -->
-      <el-dialog title="收货地址" :visible.sync="typeEditing" append-to-body="true" custom-class="dia">
+      <el-dialog title="收货地址" :visible.sync="typeEditing" custom-class="dia">
         <el-form :model="form">
           <el-form-item label="活动名称" :label-width="formLabelWidth">
             <el-input v-model="form.name" autocomplete="off"></el-input>
@@ -69,13 +88,14 @@
 </template>
 
 <script>
+import Middle from "../../public/Middle.js";
 export default {
   data() {
     return {
       tableData: [], //数据
       currentPage: 1, //默认显示第一页
-      pageSize: 4, //默认每页显示10条
-      totalNum: 1000, //总页数
+      pageSize: 0, //默认每页显示0条
+      totalNum: 0, //总页数
       typeEditing: false,
       form: {
         name: "",
@@ -92,6 +112,7 @@ export default {
   },
   created() {
     this.getTypeListData();
+    this.getPaginNum();
   },
   methods: {
     getTypeListData() {
@@ -99,24 +120,23 @@ export default {
       this.$axios
         .get(`type`)
         .then(res => {
-          // console.log(res);
           this.tableData = res.data;
           this.totalNum = this.tableData.length;
+          this.pageSize = 5;
         })
         .catch(console.log);
     },
     //   分页
-    handleSizeChange(val) {
-      //   console.log(`每页 ${val} 条`);
-      this.pageSize = val; //动态改变
-    },
-    handleCurrentChange(val) {
-      //   console.log(`当前页: ${val}`);
-      this.currentPage = val; //动态改变
+    getPaginNum() {
+      Middle.$on("pageSize", num => {
+        this.pageSize = num;
+      });
+      Middle.$on("currentPage", num => {
+        this.currentPage = num;
+      });
     },
     //   删除
     deletesType(data) {
-      // console.log(data.id);
       this.$confirm("此操作将永久删除该条数据, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -130,9 +150,7 @@ export default {
           });
           this.$axios
             .get(`type/del?id=` + data.id)
-            .then(res => {
-              // console.log(res);
-            })
+            .then(res => {})
             .catch(console.log);
 
           this.$message({
@@ -168,7 +186,7 @@ export default {
 .info {
   margin-top: 5px;
   background-color: #fff;
-  overflow: hidden;
+  overflow: auto;
 }
 .dia {
   position: fixed;

@@ -16,7 +16,7 @@
             type="text"
             v-model="loginuser"
             :placeholder="$t('m.pone')"
-            @change="userver(loginuser)"
+            @change="userverJudge(loginuser)"
           />
         </div>
         <div class="usermake">
@@ -25,22 +25,27 @@
             type="password"
             v-model="loginpass"
             :placeholder="$t('m.qpass')"
-            @change="passver(loginpass)"
+            @change="passverJudge(loginpass)"
           />
         </div>
         <!-- 登录 -->
-        <button @click="goSeach">{{$t('m.login')}}</button>
+        <button @click="login">{{$t('m.login')}}</button>
       </div>
       <!-- 忘记密码 -->
       <div class="login tantan" v-if="isShow === 2">
         <!-- 输入 -->
         <div class="usermake">
           <i class="iconfont icon-yonghu"></i>
-          <input type="text" v-model="nickname" :placeholder="$t('m.name')" @change="nickver" />
+          <input type="text" v-model="nickname" :placeholder="$t('m.name')" @change="nickverJudge" />
         </div>
         <div class="usermake">
           <i class="iconfont icon-shouji"></i>
-          <input type="text" v-model="phone" :placeholder="$t('m.pone')" @change="userver(phone)" />
+          <input
+            type="text"
+            v-model="phone"
+            :placeholder="$t('m.pone')"
+            @change="userverJudge(phone)"
+          />
         </div>
         <div class="usermake">
           <i class="iconfont icon-yanzhengma"></i>
@@ -48,7 +53,7 @@
             type="password"
             v-model="password"
             :placeholder="$t('m.keyword')"
-            @change="passver(password)"
+            @change="passverJudge(password)"
           />
         </div>
         <!-- 登录 -->
@@ -79,13 +84,13 @@ export default {
   created() {},
   methods: {
     // 用户名验证
-    nickver() {
+    nickverJudge() {
       if (this.nickname.length >= 6) {
         this.$message("用户名不得超过六位");
       }
     },
     // 手机号判断
-    userver(data) {
+    userverJudge(data) {
       // 判断手机号格式  13,17,15,18开头   11位
       let regs = /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/;
       if (!regs.test(data)) {
@@ -96,7 +101,7 @@ export default {
       }
     },
     // 密码判断
-    passver(data) {
+    passverJudge(data) {
       let reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,30}$/;
       if (!reg.test(data)) {
         this.$message("请输入八位以上，包含数字字母的密码！");
@@ -106,13 +111,12 @@ export default {
       }
     },
     //   登录验证
-    goSeach() {
-      if (
-        this.loginuser === "" ||
-        this.loginpass === "" ||
-        this.or === 0 ||
-        this.fa === 0
-      ) {
+    login() {
+      if (this.or === 0 || this.fa === 0 ||this.loginuser === "" || this.loginpass === "") {
+         this.$message({
+          message: "请正确完成您的选项",
+          type: "warning"
+        });
       } else {
         this.$axios
           .post(`login/`, {

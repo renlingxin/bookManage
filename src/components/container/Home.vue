@@ -26,6 +26,7 @@ export default {
 
 <style scoped>
 .global_container {
+
 }
 .navbar {
   width: 100%;
@@ -35,7 +36,6 @@ export default {
 .aside {
   position: fixed;
   top: 60px;
-
 }
 .substance {
   width: 100%;
@@ -44,5 +44,6 @@ export default {
   top: 70px;
   left: 180px;
   background-color: rgb(245, 244, 244);
+  overflow: auto;
 }
 </style> 
