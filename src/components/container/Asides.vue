@@ -39,21 +39,13 @@
           active-text-color="#ffd04b"
           v-if="asideTypeShow === 0"
         >
-          <!-- 分类 -->
-          <el-submenu index="1">
-            <template slot="title">
+          <!-- 类目 -->
+          <router-link :to="{path:'/Category/list'}">
+            <el-menu-item index="1">
               <i class="el-icon-menu"></i>
-              <span>分类管理</span>
-            </template>
-            <el-menu-item-group>
-              <router-link :to="{path:'/type/list'}">
-                <el-menu-item index="1-1">分类列表</el-menu-item>
-              </router-link>
-              <router-link :to="{path:'/type/add'}">
-                <el-menu-item index="1-2">添加分类</el-menu-item>
-              </router-link>
-            </el-menu-item-group>
-          </el-submenu>
+              <span slot="title">首页</span>
+            </el-menu-item>
+          </router-link>
           <!-- 账号管理 -->
           <el-submenu index="2">
             <template slot="title">

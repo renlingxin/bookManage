@@ -12,9 +12,6 @@
           <input type="text" v-model="title" placeholder="填写分类ID" @change="nickver" />
           <input type="text" v-model="tid" placeholder="填写标题" />
           <input type="text" v-model="img" placeholder="填写图片" />
-         
-         
-    
         </div>
         <button @click="goSeach">完成</button>
       </div>

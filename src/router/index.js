@@ -152,17 +152,17 @@ export default new Router({
       path: '/',
       component: resolve => require(['@/components/container/Home.vue'], resolve),
       children: [{
-        path: '/type/list',
-        name: 'typelist',
-        component: resolve => require(['@/components/type/typelist'], resolve),
+        path: '/category/list',
+        name: 'categoryList',
+        component: resolve => require(['@/components/Category/CategoryList'], resolve),
       }, {
-        path: '/type/add',
-        name: 'addtype',
-        component: resolve => require(['@/components/type/addtype'], resolve),
+        path: '/category/add',
+        name: 'categoryAdd',
+        component: resolve => require(['@/components/Category/CategoryAdd'], resolve),
       }, {
-        path: '/type/up',
-        name: 'uptype',
-        component: resolve => require(['@/components/type/uptype'], resolve),
+        path: '/category/update',
+        name: 'categoryUpdate',
+        component: resolve => require(['@/components/Category/CategoryUpdate'], resolve),
       },
       {
         path: '/404',
