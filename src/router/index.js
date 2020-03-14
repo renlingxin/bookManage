@@ -6,10 +6,11 @@ export default new Router({
   routes: [
     // 管理员
     {
-      path: '/',
+      path: '/admin',
       component: resolve => require(['@/components/container/Home.vue'], resolve),
-      children: [{
-          path: '/admin',
+      children: [
+        {
+          path: '/',
           name: 'adminlist',
           component: resolve => require(['@/components/admin/adminlist'], resolve)
         },
@@ -37,10 +38,11 @@ export default new Router({
     },
     // 用户
     {
-      path: '/',
+      path: '/user',
       component: resolve => require(['@/components/container/Home.vue'], resolve),
-      children: [{
-          path: '/user/list',
+      children: [
+        {
+          path: '/',
           name: 'userlist',
           component: resolve => require(['@/components/user/userlist'], resolve),
         },
@@ -61,10 +63,11 @@ export default new Router({
     },
     // 书文
     {
-      path: '/',
+      path: '/book',
       component: resolve => require(['@/components/container/Home.vue'], resolve),
-      children: [{
-        path: '/book/list',
+      children: [
+        {
+        path: '/',
         name: 'booklist',
         component: resolve => require(['@/components/book/booklist'], resolve),
       }, {
@@ -83,10 +86,11 @@ export default new Router({
     },
     // 图文
     {
-      path: '/',
+      path: '/img',
       component: resolve => require(['@/components/container/Home.vue'], resolve),
-      children: [{
-        path: '/img/list',
+      children: [
+        {
+        path: '/',
         name: 'imglist',
         component: resolve => require(['@/components/img/imglist'], resolve),
       }, {
@@ -105,10 +109,11 @@ export default new Router({
     },
     //作者
     {
-      path: '/',
+      path: '/author',
       component: resolve => require(['@/components/container/Home.vue'], resolve),
-      children: [{
-        path: '/author/list',
+      children: [
+        {
+        path: '/',
         name: 'authorlist',
         component: resolve => require(['@/components/author/authorlist'], resolve),
       }, {
@@ -127,10 +132,11 @@ export default new Router({
     },
     //商品
     {
-      path: '/',
+      path: '/shop',
       component: resolve => require(['@/components/container/Home.vue'], resolve),
-      children: [{
-        path: '/shop/list',
+      children: [
+        {
+        path: '/',
         name: 'shoplist',
         component: resolve => require(['@/components/shop/shoplist'], resolve),
       }, {
@@ -149,10 +155,11 @@ export default new Router({
     },
     //分类
     {
-      path: '/',
+      path: '/category',
       component: resolve => require(['@/components/container/Home.vue'], resolve),
-      children: [{
-        path: '/category/list',
+      children: [
+        {
+        path: '/',
         name: 'categoryList',
         component: resolve => require(['@/components/Category/CategoryList'], resolve),
       }, {
@@ -172,7 +179,15 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: resolve => require(['@/components/login'], resolve)
+      component: resolve => require(['@/components/login/index.vue'], resolve)
+    },
+    {
+      path: '/',
+      name: 'index',
+      redirect: {
+        name: 'adminlist'
+      },
+      component: resolve => require(['@/components/container/Home.vue'], resolve),
     },
     {
       path: '*',

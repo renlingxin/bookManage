@@ -8,7 +8,9 @@
       <el-table-column fixed prop="name" label="昵称" width="150"></el-table-column>
       <el-table-column prop="pass" label="密码" width="120"></el-table-column>
       <el-table-column prop="phone" label="手机号" width="120"></el-table-column>
-      <el-table-column prop="addtime" label="添加时间" width="120"></el-table-column>
+      <el-table-column prop="addtime" label="添加时间" width="120">
+        <template slot-scope="row">{{row.addtime | converTime}}</template>
+      </el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
@@ -77,7 +79,6 @@ export default {
             .get(`admin/del?id=` + data.id)
             .then(res => {
               // console.log(res);
-           
             })
             .catch(console.log);
           this.$message({

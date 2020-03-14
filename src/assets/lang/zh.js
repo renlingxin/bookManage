@@ -1,5 +1,5 @@
 export const m = {
-  title: '书园后台管理系统',
+  title: '书园后台管理',
   index: '首页',
   lange: '选择语言',
   admin: '管理员',

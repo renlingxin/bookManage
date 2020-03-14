@@ -40,7 +40,7 @@
           v-if="asideTypeShow === 0"
         >
           <!-- 类目 -->
-          <router-link :to="{path:'/Category/list'}">
+          <router-link :to="{path:'/admin'}">
             <el-menu-item index="1">
               <i class="el-icon-menu"></i>
               <span slot="title">首页</span>
@@ -56,10 +56,10 @@
               <router-link :to="{path:'/admin'}">
                 <el-menu-item index="2-1">管理员</el-menu-item>
               </router-link>
-              <router-link :to="{path:'/user/list'}">
+              <router-link :to="{path:'/user'}">
                 <el-menu-item index="2-2">用户列表</el-menu-item>
               </router-link>
-              <router-link :to="{path:'/author/list'}">
+              <router-link :to="{path:'/author'}">
                 <el-menu-item index="2-3">作者列表</el-menu-item>
               </router-link>
             </el-menu-item-group>
@@ -71,10 +71,10 @@
               <span>内容管理</span>
             </template>
             <el-menu-item-group>
-              <router-link :to="{path:'/book/list'}">
+              <router-link :to="{path:'/book'}">
                 <el-menu-item index="3-1">书文列表</el-menu-item>
               </router-link>
-              <router-link :to="{path:'/img/list'}">
+              <router-link :to="{path:'/img'}">
                 <el-menu-item index="3-2">图文列表</el-menu-item>
               </router-link>
             </el-menu-item-group>
@@ -95,7 +95,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 /* 左侧导航 */
 .el-aside {
   /* border-top: 1px solid rgb(134, 134, 134); */
