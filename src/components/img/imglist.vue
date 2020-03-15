@@ -1,40 +1,34 @@
 <template>
   <div style="width: 100%">
-    <el-table
-      :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
-      border
-      style="width: 100%"
-    >
-      <el-table-column prop="categoryId" label="分类ID" width="120"></el-table-column>
-      <el-table-column prop="id" label="ID" width="120"></el-table-column>
-      <el-table-column prop="title" label="标题" width="120"></el-table-column>
-      <el-table-column prop="img_url" label="图片" width="120">
-        <!-- 显示图片 -->
-        <template slot-scope="scope">
-          <img :src="scope.row.img_url" alt width="60" height="60" />
-        </template>
-      </el-table-column>
-      <el-table-column prop="zhaiyao" label="摘要" width="120"></el-table-column>
-      <el-table-column prop="authorID" label="作者" width="120"></el-table-column>
-      <el-table-column fixed="right" label="操作" width="100">
-        <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
-          <el-button type="text" size="small" @click="deletes(scope.row)">删除</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <!-- 分页 -->
-    <div class="block">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="currentPage"
-        :page-sizes="[1, 3, 5, 8]"
-        :page-size="pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="totalNum"
-      ></el-pagination>
-    </div>
+    <el-card shadow="never">
+      <el-table :data="tableData.slice((current-1)*size,current*size)" border style="width: 100%">
+        <el-table-column prop="categoryId" label="分类ID" width="120"></el-table-column>
+        <el-table-column prop="id" label="ID" width="120"></el-table-column>
+        <el-table-column prop="title" label="标题" width="150"></el-table-column>
+        <el-table-column prop="img_url" label="图片" width="150">
+          <!-- 显示图片 -->
+          <template slot-scope="scope">
+            <img :src="scope.row.img_url" alt width="60" height="60" />
+          </template>
+        </el-table-column>
+        <el-table-column prop="zhaiyao" label="摘要" width="450"></el-table-column>
+        <el-table-column prop="authorID" label="作者" width="120"></el-table-column>
+        <el-table-column label="操作" width="100">
+          <template slot-scope="scope">
+            <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
+            <el-button type="text" size="small" @click="deletes(scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <!-- 分页 -->
+      <ren-pagination
+        :total="total"
+        :size="size"
+        :current="current"
+        @on-change="pageChange"
+        class="block"
+      ></ren-pagination>
+    </el-card>
   </div>
 </template>
 
@@ -43,20 +37,16 @@ export default {
   data() {
     return {
       tableData: [],
-      currentPage: 1, //默认显示第一页
-      pageSize: 5, //默认每页显示10条
-      totalNum: 1000 //总页数
+      current: 1, //默认显示第一页
+      size: 5, //默认每页显示10条
+      total: 0 //总页数
     };
   },
   methods: {
-    //   分页
-    handleSizeChange(val) {
-      //   console.log(`每页 ${val} 条`);
-      this.pageSize = val; //动态改变
-    },
-    handleCurrentChange(val) {
-      //   console.log(`当前页: ${val}`);
-      this.currentPage = val; //动态改变
+    // 分页响应
+    pageChange({ size, current }) {
+      console.log(current, size);
+      Object.assign(this, { current, size });
     },
     //   删除
     deletes(data) {
@@ -76,7 +66,6 @@ export default {
             .get(`img/del?id=` + data.id)
             .then(res => {
               // console.log(res);
-           
             })
             .catch(console.log);
           this.$message({
@@ -108,7 +97,7 @@ export default {
         // console.log(res);
         this.tableData = res.data;
         // 赋值总条数
-        this.totalNum = this.tableData.length;
+        this.total = this.tableData.length;
       })
       .catch(console.log);
   }

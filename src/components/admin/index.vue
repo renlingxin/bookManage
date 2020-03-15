@@ -1,16 +1,14 @@
 <template>
   <div style="width: 100%">
-    <el-card>
-      <el-table
-        :data="tableData.slice((current-1)*size,current*size)"
-        border
-        style="width: 100%"
-      >
+    <el-card shadow="never">
+      <el-table :data="tableData" border style="width: 100%">
         <el-table-column fixed prop="name" label="昵称" width="150"></el-table-column>
         <el-table-column prop="pass" label="密码" width="120"></el-table-column>
         <el-table-column prop="phone" label="手机号" width="120"></el-table-column>
-        <el-table-column prop="addtime" label="添加时间" width="120"></el-table-column>
-        <el-table-column fixed="right" label="操作" width="100">
+        <el-table-column prop="addtime" label="添加时间" width="120">
+          <template slot-scope="row">{{row.addtime | converTime}}</template>
+        </el-table-column>
+        <el-table-column label="操作" width="100" align="center" fixed="right">
           <template slot-scope="scope">
             <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
             <el-button type="text" size="small" @click="deletes(scope.row)">删除</el-button>
@@ -42,14 +40,13 @@ export default {
   methods: {
     // 分页响应
     pageChange({ size, current }) {
-      console.log(current, size);
       Object.assign(this, { current, size });
     },
     //   修改
     handleClick(data) {
       // console.log(data);
       this.$router.push({
-        name: "userupdata",
+        name: "make",
         params: { makedata: data }
       });
     },
@@ -68,7 +65,7 @@ export default {
             }
           });
           this.$axios
-            .get(`user/del?id=` + data.id)
+            .get(`admin/del?id=` + data.id)
             .then(res => {
               // console.log(res);
             })
@@ -88,7 +85,7 @@ export default {
   },
   created() {
     this.$axios
-      .get(`user`)
+      .get(`admin`)
       .then(res => {
         // console.log(res);
         this.tableData = res.data;
@@ -100,5 +97,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+@import "./index.less";
 </style>

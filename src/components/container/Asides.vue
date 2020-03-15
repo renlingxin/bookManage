@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="aside">
       <el-aside style="width:170px">
         <!-- 商家 -->
         <el-menu
@@ -30,7 +30,7 @@
             <span slot="title">数据</span>
           </el-menu-item>
         </el-menu>
-        <!-- 管理 -->
+        <!-- 管理员 -->
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
@@ -79,6 +79,20 @@
               </router-link>
             </el-menu-item-group>
           </el-submenu>
+          <!-- 分类 -->
+          <router-link :to="{path:'/category'}">
+            <el-menu-item index="4">
+              <i class="el-icon-menu"></i>
+              <span slot="title">分类</span>
+            </el-menu-item>
+          </router-link>
+          <!-- 商品 -->
+          <router-link :to="{path:'/shop'}">
+            <el-menu-item index="5">
+              <i class="el-icon-menu"></i>
+              <span slot="title">商品</span>
+            </el-menu-item>
+          </router-link>
         </el-menu>
       </el-aside>
     </div>
@@ -96,23 +110,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.aside {
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+}
 /* 左侧导航 */
 .el-aside {
-  /* border-top: 1px solid rgb(134, 134, 134); */
   width: 170px;
-  height: 100%;
+  height: 100vh;
   overflow-x: hidden;
 }
 .el-menu-vertical-demo {
   width: 100%;
   /* 满屏显示 */
   height: 100vh;
-  overflow: hidden;
-}
-span {
-  font-size: 12px;
-}
-li {
-  font-size: 5px;
 }
 </style> 
