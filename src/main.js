@@ -3,10 +3,9 @@ import App from './App'
 import router from './router'
 import filters from './libs/filters'
 import publicCom from './components/common/index'
-// 引入全局自定义样式
 import '../static/css/public.css';
-// iconfont样式
 import './assets/iconfont/iconfont.css'
+import store from './store'
 
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
@@ -48,5 +47,6 @@ new Vue({
   el: '#app',
   router,
   i18n,
+  store,
   render: h => h(App)
 })

@@ -7,7 +7,7 @@ import {
 Vue.use(Router)
 
 const router = new Router({
-  // mode: 'history',
+  mode: 'history',
   routes
 })
 // 全局路由-前置钩子

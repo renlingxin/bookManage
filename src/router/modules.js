@@ -230,11 +230,17 @@ export default [
     redirect: {
       name: 'adminlist'
     },
+    meta: {
+      title: '首页'
+    },
     component: resolve => require(['@/components/container/Home.vue'], resolve)
   },
   {
     path: '/404',
     name: '404',
+    meta: {
+      title: '404'
+    },
     component: resolve => require(['@/components/404.vue'], resolve)
   },
   {

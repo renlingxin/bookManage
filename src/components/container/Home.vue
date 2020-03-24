@@ -10,6 +10,7 @@
         </el-aside>
         <el-container>
           <el-main class="content">
+            <renTags></renTags>
             <router-view></router-view>
           </el-main>
         </el-container>
@@ -20,6 +21,7 @@
 <script>
 import asides from "./Asides.vue";
 import navbars from "./Navbars.vue";
+import renTags from '@/components/common/ren-tags'
 export default {
   name: "home",
   data() {
@@ -27,7 +29,8 @@ export default {
   },
   components: {
     asides,
-    navbars
+    navbars,
+    renTags
   },
   created() {}
 };
