@@ -1,10 +1,11 @@
-# administration-书园中后台系统
+# administration --- 后台管理
 
 > A Vue.js project
+## 有问题欢迎提出 --- 1977053732@qq.com
 
 ## Build Setup
 
-``` bash
+``` bashqq.com
 # install dependencies
 npm install
 
@@ -17,5 +18,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
