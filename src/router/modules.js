@@ -225,10 +225,25 @@ export default [
     component: resolve => require(['@/components/login/index.vue'], resolve)
   },
   {
+    path: '/index',
+    meta: {
+      title: '首页'
+    },
+    component: resolve => require(['@/components/container/Home.vue'], resolve),
+    children: [{
+      path: '/',
+      name: 'index',
+      meta: {
+        title: '首页'
+      },
+      component: resolve => require(['@/components/index/index.vue'], resolve)
+    }, ]
+  },
+  {
     path: '/',
     name: 'index',
     redirect: {
-      name: 'adminlist'
+      name: 'index'
     },
     meta: {
       title: '首页'

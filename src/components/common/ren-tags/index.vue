@@ -17,12 +17,12 @@ export default {
     };
   },
   watch: {
-    $route: {
-      handler(va) {
-        // console.log(va);
-        if(va) this.$store.commit('ADD_TAGS',va)
-      }
-    }
+    // $route: {
+    //   handler(va) {
+    //     // console.log(va);
+    //     if(va) this.$store.commit('ADD_TAGS',va)
+    //   }
+    // }
   },
   computed: {
     tagLists:function(){

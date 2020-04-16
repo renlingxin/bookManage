@@ -43,7 +43,7 @@ export default {
     },
     // 提交修改
     goSeach() {
-      if (this.ge === 0 || this.title === "" || this.author === "") {
+      if (this.title === "" || this.author === "") {
       } else {
         this.$axios
           .post(`img/make`, {

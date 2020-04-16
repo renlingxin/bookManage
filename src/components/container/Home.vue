@@ -10,7 +10,7 @@
         </el-aside>
         <el-container>
           <el-main class="content">
-            <renTags></renTags>
+            <renTags v-if="tagShow"></renTags>
             <router-view></router-view>
           </el-main>
         </el-container>
@@ -21,18 +21,27 @@
 <script>
 import asides from "./Asides.vue";
 import navbars from "./Navbars.vue";
-import renTags from '@/components/common/ren-tags'
+import renTags from "@/components/common/ren-tags";
 export default {
   name: "home",
   data() {
-    return {};
+    return {
+      tagShow: false
+    };
   },
   components: {
     asides,
     navbars,
     renTags
   },
-  created() {}
+  watch: {
+    $route: {
+      handler(va) {
+        let show = va.name !== "index" ? true :false
+        this.tagShow = show;
+      }
+    }
+  }
 };
 </script>
 

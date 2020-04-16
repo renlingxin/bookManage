@@ -40,7 +40,7 @@
           v-if="asideTypeShow === 0"
         >
           <!-- 类目 -->
-          <router-link :to="{path:'/admin'}">
+          <router-link :to="{path:'/index'}">
             <el-menu-item index="1">
               <i class="el-icon-menu"></i>
               <span slot="title">首页</span>
