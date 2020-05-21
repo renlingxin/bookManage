@@ -80,13 +80,15 @@ export default {
 .head {
   width: 100%;
   height: 60px;
-  /* background-color: #333; */
+  position: fixed;
+  top: 0;
+  left: 0;
   color: #fff;
   overflow: hidden;
   justify-content: space-between;
   align-items: center;
   background-color: #333;
-  background-image: radial-gradient(
+  /* background-image: radial-gradient(
       white,
       rgba(255, 255, 255, 0.2) 2px,
       transparent 40px
@@ -99,7 +101,7 @@ export default {
       transparent 30px
     );
   background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px; */
 }
 /* 标题 */
 .definition {

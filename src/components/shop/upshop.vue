@@ -53,7 +53,8 @@ export default {
     },
     // 提交修改
     goSeach() {
-      if (this.ge === 0 || this.title === "" || this.author === "") {
+      if (this.title === "" || this.author === "") {
+        console.log(2323);
       } else {
         this.$axios
           .post(`shop/make`, {
@@ -62,11 +63,14 @@ export default {
             sell_price: this.sell_price,
             img_url: this.img_url,
             stock: this.stock,
-            page: this.page,
+            page: Number(this.page),
             id: this.id
           })
           .then(res => {
-            // console.log(res);
+            this.$message({
+              message: "修改成功",
+              type: "success"
+            });
             this.$router.push({
               name: "shoplist"
             });
@@ -114,7 +118,7 @@ export default {
   color: #000;
 }
 /* 登录 */
-.usermake{
+.usermake {
   width: 100%;
   height: 50px;
   align-items: center;
